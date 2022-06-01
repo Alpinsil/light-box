@@ -1,0 +1,168 @@
+/* Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+
+
+/* Style Utama */
+
+body {
+    font:18px/36px 'Poppins',sans-serif;
+    background-color: #ddd;
+}
+
+
+h1 {
+    font-size: 80px;
+    margin: 50px 0;
+    text-align: center;
+    font-weight: 700;
+    text-shadow: 0px 10px 10px white;
+}
+.container {
+    width: 600px;
+    background-color: white;
+    margin: 80px auto 10px;
+    padding: 22px;
+    box-shadow:0 0 3px 15px rgba(0, 0, 0, .5);
+    border-radius: 10px;
+}
+
+.gallery li{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    /* overflow: hidden; */
+    border: 5px solid #666;
+    float: left;
+    position: relative;
+}
+
+.gallery li:not(:last-child){
+    margin-right: 22px;
+}
+
+.gallery li span{
+    display: block;
+    text-transform: uppercase;
+    width: 120px;
+    height: 120px;
+    background-color: rgba(239, 234, 216, .5);
+    border-radius: 50%;
+    position: absolute;
+    line-height: 120px;
+    font-size: 12px;
+    text-align: center;
+    top: 0px;
+    color: rgb(0, 0, 0);
+    text-shadow: 1px 1px 4px #fff;
+    font-weight: bolder;
+    opacity: 0;
+    transition: 0.3s;
+    transform: scale(0) rotate(0);
+}
+.gallery li:hover span{
+    opacity: 1;
+    transform: scale(1) rotate(360deg);
+}
+.gallery li img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    transition: .3s ease-in-out;
+}
+
+.gallery li:hover img{
+    opacity: .5;
+}
+
+/* overlay untuk mengatur gambar ketika membesar atau diclick */
+
+
+.overlay .sub-overlay{
+    width: 800px;
+    height: 800px;
+}
+
+.overlay {
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0);
+    z-index: 9999;
+    transition: .6s;
+    text-align: center;
+    padding: 100px;
+}
+
+.overlay:target{
+    width: auto;
+    height: auto;
+    bottom: 0;
+    right: 0;
+    background: rgba(0,0,0,.8);
+}
+
+.overlay img{
+    max-height: 100%;
+    
+}
+
+/* saat overlay di target maka img akan diberi animasi seperti  berikut */
+
+.overlay:target img{
+    box-shadow: 2px 2px 5px 10px rgba(0,0,0, .7);
+    padding: 5px;
+    animation: zoom-fade 1s ease-in-out;
+}
+
+/* animasi */
+
+@keyframes zoom-fade {
+    0%{
+        transform: scale(0);
+        opacity: 0;
+    }
+    100%{
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes slidedownfade {
+    0%{
+        opacity: 0;
+        margin-top: -20px;
+    }
+
+    100%{
+        opacity: 1;
+        margin-top: 0;
+    }
+
+    
+}
+
+.overlay:target .close {
+    animation: zoom-fade .5s .5s forwards;
+    font-size: 30px;
+    text-decoration: none;
+    font-weight: 800;
+    color: red;
+    border-radius: 50%;
+    background-color: whitesmoke;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.close{
+    display: inline-block;
+    width: 0;
+    overflow: hidden;
+    opacity: 0;
+}
+
