@@ -18,10 +18,11 @@ h1 {
     text-shadow: 0px 10px 10px white;
 }
 .container {
-    width: 600px;
+    width: 644px;
     background-color: white;
     margin: 80px auto 10px;
     padding: 22px;
+    box-sizing: border-box;
     box-shadow:0 0 3px 15px rgba(0, 0, 0, .5);
     border-radius: 10px;
 }
@@ -37,7 +38,7 @@ h1 {
 }
 
 .gallery li:not(:last-child){
-    margin-right: 22px;
+    margin-right: 18px;
 }
 
 .gallery li span{
@@ -59,7 +60,7 @@ h1 {
     transition: 0.3s;
     transform: scale(0) rotate(0);
 }
-.gallery li:hover span{
+.gallery li:hover span, .gallery li:hover .licence{
     opacity: 1;
     transform: scale(1) rotate(360deg);
 }
@@ -74,13 +75,47 @@ h1 {
     opacity: .5;
 }
 
+/* License */
+.license{
+    width: 600px;
+    background-color: white;
+    margin: 80px auto 10px;
+    padding: 1px;
+    box-sizing: border-box;
+    box-shadow:0 0 3px 15px rgba(0, 0, 0, .5);
+    border-radius: 10px;
+    text-align: center;
+    position: absolute;
+    bottom: 20px;
+    /* opacity: 0;
+    transition: 0.3s; */
+}
+
+.license a{
+    position: relative;
+    opacity: 0;
+    transition: .3s;
+}
+
+.gallery:hover .license a{
+    display: inline-block;
+    text-align: center;
+    opacity: 1;
+}
+
+.container .gallery:hover .license p{
+    opacity: 0;
+}
+
+.license p{
+    display: inline-block;
+    position: absolute;
+    right: 40%;
+    transition: .3s;
+}
+
 /* overlay untuk mengatur gambar ketika membesar atau diclick */
 
-
-.overlay .sub-overlay{
-    width: 800px;
-    height: 800px;
-}
 
 .overlay {
     width: 0;
@@ -144,25 +179,22 @@ h1 {
     
 }
 
-.overlay:target .close {
-    animation: zoom-fade .5s .5s forwards;
-    font-size: 30px;
-    text-decoration: none;
-    font-weight: 800;
-    color: red;
-    border-radius: 50%;
-    background-color: whitesmoke;
-    width: 40px;
-    height: 40px;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-}
 
 .close{
-    display: inline-block;
-    width: 0;
-    overflow: hidden;
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    margin-left: -20px;
+    color: #fff;
+    text-decoration: none;
+    background-color: black;
+    border: 1px solid white;
+    line-height: 20px;
+    padding: 4px;
     opacity: 0;
+}
+
+.overlay:target .close{
+    animation: slidedownfade .5s .5s forwards;
 }
 
